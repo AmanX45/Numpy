@@ -1,0 +1,42 @@
+NumPy Basics
+
+Welcome to the NumPy basics guide! Below, you'll find instructions on how to install, import, and understand the key features of the NumPy library.
+
+ Introduction to NumPy:
+
+- NumPy (Numerical Python) is a powerful library for numerical computations in Python.
+- It provides support for large, multi-dimensional arrays and matrices.
+- Offers a wide collection of mathematical functions to perform operations on arrays.
+- It is widely used in fields like data science, machine learning, and scientific computing.
+
+How to Install the Latest Version of NumPy:
+
+To get started with NumPy, you first need to install it. Use one of the following methods:
+- Using pip (Python package installer): `pip install numpy `
+- Using conda (Anaconda users): `conda install numpy`
+
+ How to Import NumPy:
+Once installed, you can import NumPy into your Python script using an alias:
+- Import with alias `np`: `import numpy as np`
+
+ What is Alias in Python?
+
+- An alias is a shorthand or nickname for a module, function, or object.
+- It is used to simplify your code and make it more readable.
+- In NumPy, we commonly use the alias `np` for the `numpy` module. For example, instead of typing `numpy.array([1, 2, 3])`, you can simply use `np.array([1, 2, 3])`.
+
+Dimension of a NumPy Array:
+
+NumPy arrays can have different dimensions. Here are the basic types:
+0D (Scalar):   A single value. Example: `np.array(5)`
+1D (Vector):   A one-dimensional array. Example: `np.array([1, 2, 3])`
+2D (Matrix):   A two-dimensional array (like a table or grid). Example: `np.array([[1, 2], [3, 4]])`
+3D (Tensor):   A three-dimensional array. Example: `np.array([[[1], [2]], [[3], [4]]])`
+
+NumPy also supports higher-dimensional arrays, and the dimension is determined by the shape of the array.
+
+For more information check the code and use try & test method .
+
+
+For More Queries Feel Free To Contact : 
+E-mail📧 - amanc79999@gmail.com
