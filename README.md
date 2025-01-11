@@ -2,7 +2,7 @@
 
 # **NumPy Learning Repository**
 
-This repository contains a collection of **NumPy codes**, ranging from **basic to advanced topics**, to help track and enhance my learning journey. Each code file is organized with a corresponding `.txt` file for detailed explanations of the code. I upload new codes daily as part of my learning progress.
+This repository contains a collection of **NumPy codes**, ranging from **basic to advanced topics**, to help track and enhance my learning journey. Each code file is organized with a corresponding `.txt` file for detailed explanations of the code. I upload new codes & a study material as txt (Day1,Day2)daily as part of my learning progress .
 
 ---
 
