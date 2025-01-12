@@ -1,0 +1,193 @@
+## **1. Shape in NumPy**
+
+### **Definition**
+- The `shape` of a NumPy array gives the size of the array along each axis as a tuple.
+- The length of the shape tuple represents the number of dimensions (axes) of the array.
+
+### **Syntax**
+```python
+array.shape
+```
+
+### **Key Points**
+- `shape` is a **read-only** attribute.
+- It helps to analyze the structure of an array without modifying it.
+
+### **Examples**
+- A 1D array `[1, 2, 3, 4, 5]` has a shape `(5,)`.  
+- A 2D array with 3 rows and 4 columns, like `[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]`, has a shape `(3, 4)`.
+
+---
+
+## **2. Reshape in NumPy**
+
+### **Definition**
+- The `.reshape()` method creates a new view of an array with a different shape, without altering its data.
+
+### **Syntax**
+```python
+array.reshape(new_shape)
+```
+
+### **Key Rules**
+1. The total number of elements in the original array must equal the total number of elements in the reshaped array.
+2. Use `-1` to automatically calculate one dimension when reshaping.
+
+### **Examples**
+1. Reshaping a 1D array to 2D:  
+   A 1D array `[1, 2, 3, 4, 5, 6]` reshaped to 2D gives:
+   - Reshaped array: `[[1, 2, 3], [4, 5, 6]]`  
+   - Shape: `(2, 3)`
+
+2. Automatic calculation with `-1`:  
+   For an array of 12 elements:
+   ```python
+   array.reshape(-1, 4)  # Automatically calculates rows
+   ```
+   Result: 3 rows and 4 columns.
+
+---
+
+## **3. Iteration in NumPy**
+
+### **Definition**
+- Iteration refers to accessing elements of an array sequentially.
+
+### **Basic Iteration**
+1. **1D Array:** Iterate over elements directly.  
+   Example: `[1, 2, 3]` → Access elements `1`, `2`, `3`.
+
+2. **2D Array:** Iterate over rows by default.  
+   Example:  
+   - Array: `[[1, 2], [3, 4]]`  
+   - Access rows `[1, 2]` and `[3, 4]`.
+
+3. **Higher Dimensions:**  
+   - By default, iteration happens along the first axis.  
+   - Nested loops are needed for deeper levels.
+
+### **Advanced Iteration**
+1. **Flattened Iteration:** Use `.flat` to iterate over all elements as if the array were 1D.  
+   Example:
+   ```python
+   for element in array.flat:
+       print(element)
+   ```
+
+2. **Enumerating Indices:** Use `np.ndenumerate()` to access both elements and their indices during iteration.  
+   Example:
+   ```python
+   for index, value in np.ndenumerate(array):
+       print(index, value)
+   ```
+
+---
+
+## **4. Using `nditer` for Advanced Iteration**
+
+### **Definition**
+- `np.nditer` is an efficient iterator that allows element-wise traversal of NumPy arrays, even for multi-dimensional arrays. It supports advanced features like modifying array elements during iteration and broadcasting.
+
+### **Syntax**
+```python
+np.nditer(array, flags, op_flags, order)
+```
+
+### **Key Parameters**
+1. **`flags`:** Control iteration order.
+   - `['c_index']`: Row-major (C-style) iteration.
+   - `['f_index']`: Column-major (Fortran-style) iteration.
+
+2. **`op_flags`:** Define operations for elements during iteration.
+   - `['readwrite']`: Modify elements during iteration.
+   - `['readonly']`: Only read elements.
+
+3. **`order`:** Define iteration order.
+   - `'C'`: Row-major order.
+   - `'F'`: Column-major order.
+
+### **Features of `nditer`**
+1. **Element-wise Access:** Iterates element by element, regardless of array shape.
+2. **Read-Write Capability:** Allows modification of elements during iteration.
+3. **Broadcasting Support:** Handles arrays of different shapes if they are broadcast-compatible.
+
+### **Examples**
+1. **Basic `nditer`:**
+   ```python
+   for x in np.nditer(array):
+       print(x)
+   ```
+   Iterates element by element.
+
+2. **Modifying Elements:**
+   ```python
+   for x in np.nditer(array, op_flags=['readwrite']):
+       x[...] = x * 2
+   ```
+   Doubles each element in the array.
+
+3. **Custom Order:**
+   ```python
+   for x in np.nditer(array, order='F'):  # Fortran-style (column-major) order
+       print(x)
+   ```
+
+---
+
+## **Important Interview Topics**
+
+### **Shape**
+- Understanding the dimensions and structure of an array using `.shape`.
+- Real-world use: Analyzing datasets with dimensions like `(rows, columns)`.
+
+### **Reshape**
+- Transforming data into the required shape for computations (e.g., reshaping a 1D array to 2D for matrix operations).
+- Understanding and using the `-1` placeholder in `.reshape()`.
+
+### **Iteration**
+- Traversing through arrays efficiently with `.flat` and `np.ndenumerate()`.
+- Practical applications like element-wise calculations or row-based data manipulation.
+
+### **`nditer`**
+- Advanced iteration with read-write capabilities.
+- Handling arrays with different iteration orders or modifying elements in-place.
+
+---
+
+## **Interview Questions**
+
+### **Shape Questions**
+1. How do you determine the shape of a NumPy array?
+   Answer: Use the `.shape` attribute.
+
+2. What does a shape `(5, 3)` represent?
+   Answer: An array with 5 rows and 3 columns.
+
+---
+
+### **Reshape Questions**
+1. Can you reshape an array with 10 elements into `(3, 4)`? Why or why not?  
+   Answer: No, because 3 × 4 = 12, which doesn't match the total number of elements.
+
+2. What is the use of `-1` in `reshape()`?  
+   Answer: It allows NumPy to automatically calculate one dimension based on the total size.
+
+---
+
+### **Iteration Questions**
+1. What is the default behavior when iterating over a 2D array in NumPy?  
+   Answer: It iterates row by row.
+
+2. How can you access both the elements and their indices while iterating?  
+   Answer: Use `np.ndenumerate()`.
+
+---
+
+### **`nditer` Questions**
+1. What is the purpose of `np.nditer` in NumPy?  
+   Answer: It provides efficient and flexible element-wise iteration over arrays.
+
+2. How can you modify elements of an array during iteration?  
+   Answer: Use `op_flags=['readwrite']` in `np.nditer`.
+
+---
