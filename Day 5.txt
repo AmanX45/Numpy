@@ -1,0 +1,144 @@
+# NumPy: Sort and Filter
+
+## **Sorting in NumPy**
+Sorting is one of the most common operations when dealing with numerical and textual data. NumPy provides powerful tools to perform sorting efficiently.
+
+### **Key Sorting Functions**
+
+1. **`numpy.sort()`**
+   - **Purpose**: Sorts the array along a specified axis.
+   - **Key Features**:
+     - Returns a sorted copy of the array.
+     - Works on arrays of any dimension.
+     - Sorts along the specified axis; if no axis is provided, it flattens the array and sorts it.
+
+   - **Syntax**:
+     ```python
+     numpy.sort(a, axis=-1, kind=None, order=None)
+     ```
+     - **`a`**: Input array to be sorted.
+     - **`axis`**: Axis along which to sort. Default is `-1` (last axis).
+     - **`kind`**: Specifies the sorting algorithm (`'quicksort'`, `'mergesort'`, `'heapsort'`, `'stable'`).
+     - **`order`**: If the array contains fields, this specifies the order to compare them.
+
+2. **`numpy.argsort()`**
+   - **Purpose**: Returns the indices that would sort an array.
+   - **Use Case**: Useful for indirect sorting where you need the index positions rather than the sorted values.
+
+   - **Syntax**:
+     ```python
+     numpy.argsort(a, axis=-1, kind=None, order=None)
+     ```
+
+3. **`numpy.lexsort()`**
+   - **Purpose**: Performs an indirect sort using a sequence of keys.
+   - **Use Case**: Sorting based on multiple keys, where keys are provided as rows in a 2D array.
+
+   - **Syntax**:
+     ```python
+     numpy.lexsort(keys)
+     ```
+     - **`keys`**: A tuple of 1D arrays to be sorted.
+
+4. **`numpy.msort()`**
+   - **Purpose**: Sorts along the first axis.
+   - **Use Case**: Convenience function for sorting large arrays by rows.
+
+   - **Syntax**:
+     ```python
+     numpy.msort(a)
+     ```
+
+5. **`numpy.sort_complex()`**
+   - **Purpose**: Sorts a complex array by the real part, then by the imaginary part.
+   - **Use Case**: Sorting arrays of complex numbers.
+
+   - **Syntax**:
+     ```python
+     numpy.sort_complex(a)
+     ```
+
+### **Important Notes on Sorting**:
+- **In-place vs Copy**: Sorting functions like `numpy.sort()` return a new sorted array, leaving the original array unchanged. To sort in-place, you need to explicitly assign the result back.
+- **Stability**: Choosing the `'stable'` sorting algorithm preserves the order of equal elements.
+
+---
+
+## **Filtering in NumPy**
+Filtering allows you to extract elements from an array based on conditions, making it one of the most crucial features for data analysis.
+
+### **Key Concepts in Filtering**
+1. **Boolean Indexing**:
+   - You can create a mask (a Boolean array) where each element represents whether a condition is `True` or `False`. This mask is then used to filter the original array.
+
+   - **Example**: Extracting all elements greater than a value.
+
+2. **`numpy.where()`**:
+   - **Purpose**: Returns the indices of elements that satisfy a condition or replaces elements based on conditions.
+   - **Syntax**:
+     ```python
+     numpy.where(condition, [x, y])
+     ```
+     - **`condition`**: A Boolean array.
+     - **`x` and `y`**: Values to use where the condition is `True` or `False` (optional).
+
+3. **`numpy.nonzero()`**:
+   - **Purpose**: Finds the indices of non-zero elements.
+   - **Use Case**: Helpful for filtering elements based on non-zero values.
+
+   - **Syntax**:
+     ```python
+     numpy.nonzero(a)
+     ```
+
+4. **`numpy.extract()`**:
+   - **Purpose**: Returns elements from an array that satisfy a given condition.
+   - **Syntax**:
+     ```python
+     numpy.extract(condition, arr)
+     ```
+
+### **Filtering Tips**:
+- Combine multiple conditions using logical operators like `&` (and), `|` (or), and `~` (not).
+- Filtering creates a new array, leaving the original data unchanged.
+
+---
+
+## **Interview Questions on NumPy Sort and Filter**
+
+### **Sorting Questions**
+1. **What is the difference between `numpy.sort()` and `numpy.argsort()`?**
+   - `numpy.sort()` returns a sorted copy of the array, while `numpy.argsort()` returns the indices that would sort the array.
+
+2. **What are the different sorting algorithms supported by NumPy?**
+   - `'quicksort'`, `'mergesort'`, `'heapsort'`, and `'stable'`.
+
+3. **Explain the use of `numpy.lexsort()` with an example.**
+   - Used for sorting based on multiple keys. For example, sorting students by age and then by name.
+
+4. **How does NumPy ensure stable sorting?**
+   - By using the `'stable'` option in the `kind` parameter.
+
+5. **What is the difference between `numpy.msort()` and `numpy.sort()`?**
+   - `numpy.msort()` always sorts along the first axis, while `numpy.sort()` allows specifying any axis.
+
+### **Filtering Questions**
+1. **How do you filter elements in a NumPy array?**
+   - Using Boolean indexing, `numpy.where()`, or `numpy.extract()`.
+
+2. **What is the purpose of `numpy.nonzero()`?**
+   - To find the indices of non-zero elements in an array.
+
+3. **How can you filter elements based on multiple conditions?**
+   - By combining conditions using logical operators like `&`, `|`, and `~`.
+
+4. **What is the difference between `numpy.extract()` and `numpy.where()`?**
+   - `numpy.extract()` returns values that satisfy a condition, while `numpy.where()` can return indices or replace elements based on the condition.
+
+5. **Explain Boolean masking in NumPy. How is it useful?**
+   - Boolean masking involves creating a mask array of `True`/`False` values to filter data. It is useful for extracting or modifying specific elements.
+
+---
+
+By mastering sorting and filtering in NumPy, you can handle large datasets effectively, ensuring faster and more efficient data manipulation.
+
